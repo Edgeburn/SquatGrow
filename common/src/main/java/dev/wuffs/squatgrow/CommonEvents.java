@@ -53,6 +53,11 @@ public class CommonEvents {
         Level level = player.level;
         BlockPos pos = player.blockPosition();
 
+        // We only want to allow twerking in the overworld and the nether
+        if (!(level.dimension().location().toString().equals("minecraft:overworld") || level.dimension().location().toString().equals("minecraft:the_nether"))) {
+            return;
+        }
+
         for (int x = -config.range; x <= config.range; x++) {
             for (int z = -config.range; z <= config.range; z++) {
                 for (int y = -1; y <= 1; y++) {
